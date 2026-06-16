@@ -438,7 +438,12 @@ export default function AdminComplaints() {
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
                   <Mail size={14} className="text-slate-500" />
-                  <a href={`mailto:student@campus.edu`} className="text-slate-300 hover:text-indigo-400">{complaint.studentEmail || 'student@campus.edu'}</a>
+                  <a
+                    href={`mailto:${complaint.studentEmail ?? 'student@campus.edu'}`}
+                    className="text-slate-300 hover:text-indigo-400"
+                  >
+                    {complaint.studentEmail ?? 'student@campus.edu'}
+                  </a>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
                   <Phone size={14} className="text-slate-500" />

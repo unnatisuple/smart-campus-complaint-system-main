@@ -85,6 +85,7 @@ export interface Complaint {
   studentId: string;
   studentName: string;
   studentEnrollment: string;
+  studentEmail?: string;
   title: string;
   description: string;
   categoryId: string;

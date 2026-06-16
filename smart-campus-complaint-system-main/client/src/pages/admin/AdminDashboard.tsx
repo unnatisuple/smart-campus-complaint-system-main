@@ -359,7 +359,7 @@ export default function AdminDashboard() {
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 900 }}>
             <thead>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                {[['complaintNo', 'ID'], ['title', 'Title'], ['categoryName', 'Category'], ['priority', 'Priority'], ['status', 'Status'], ['assignment', 'Assigned To'], ['createdAt', 'Date'], ['', 'Actions']].map(([col, label]) => (
+                {[['complaintNo', 'ID'], ['title', 'Title'], ['categoryName', 'Category'], ['priority', 'Priority'], ['status', 'Status'], ['', 'Assigned To'], ['createdAt', 'Date'], ['', 'Actions']].map(([col, label]) => (
                   <th key={col} onClick={col ? () => handleSort(col) : undefined}
                     style={{ padding: '12px 16px', textAlign: 'left', color: '#64748B', fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', cursor: col ? 'pointer' : 'default', whiteSpace: 'nowrap' }}>
                     {label} {col && <SortIcon col={col} />}

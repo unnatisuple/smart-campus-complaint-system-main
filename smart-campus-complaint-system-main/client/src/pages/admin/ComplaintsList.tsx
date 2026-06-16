@@ -15,7 +15,7 @@ import { MOCK_STAFF } from '../../data/mockData';
 import { Complaint, ComplaintStatus, Priority } from '../../types';
 
 const PAGE_SIZE = 10;
-type SortKey = 'complaintNo' | 'title' | 'studentName' | 'priority' | 'status' | 'createdAt';
+type SortKey = 'complaintNo' | 'title' | 'studentName' | 'categoryName' | 'priority' | 'status' | 'createdAt';
 
 const STATUSES: ComplaintStatus[] = ['pending', 'assigned', 'in_progress', 'resolved', 'closed'];
 const PRIORITIES: Priority[] = ['critical', 'high', 'medium', 'low'];
@@ -269,7 +269,15 @@ export default function ComplaintsList() {
             initial={{ opacity: 0, height: 0, marginBottom: 0 }}
             animate={{ opacity: 1, height: 'auto', marginBottom: 16 }}
             exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-            style={{ background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.3)', borderRadius: 12, padding: '12px 16px', display: 'flex', alignItems: 'center', justifyBetween: 'space-between', justifyContent: 'space-between' }}
+            style={{
+              background: 'rgba(99,102,241,0.12)',
+              border: '1px solid rgba(99,102,241,0.3)',
+              borderRadius: 12,
+              padding: '12px 16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}
           >
             <span style={{ color: '#818CF8', fontSize: 14, fontWeight: 500 }}>{selectedIds.length} complaint{selectedIds.length > 1 ? 's' : ''} selected</span>
             <div className="flex gap-3">
@@ -298,7 +306,7 @@ export default function ComplaintsList() {
                   <input type="checkbox" checked={selectedIds.length === paginated.length && paginated.length > 0} onChange={toggleSelectAll}
                     style={{ width: 16, height: 16, cursor: 'pointer', accentColor: '#6366F1' }} />
                 </th>
-                {([['complaintNo', 'ID'], ['title', 'Title/Student'], ['categoryName', 'Category'], ['priority', 'Priority'], ['status', 'Status'], ['assignment', 'Assigned To'], ['createdAt', 'Created'], ['', 'Actions']] as [SortKey | '', string][]).map(([col, label]) => (
+                {([['complaintNo', 'ID'], ['title', 'Title/Student'], ['categoryName', 'Category'], ['priority', 'Priority'], ['status', 'Status'], ['', 'Assigned To'], ['createdAt', 'Created'], ['', 'Actions']] as [SortKey | '', string][]).map(([col, label]) => (
                   <th key={label} style={{ padding: '14px 16px', textAlign: 'left', color: '#64748B', fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
                     {label}
                     {col && <SortButton col={col as SortKey} />}
